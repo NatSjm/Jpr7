@@ -1,17 +1,45 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    public static ListNode reverseLinkedList(ListNode head) {
+        ListNode prev = null;
+        ListNode current = head;
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        while (current != null) {
+            ListNode nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
         }
+
+        return prev;
     }
+
+    public static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        ListNode item_2 = new ListNode(2);
+        head.next = item_2;
+        ListNode item_3 = new ListNode(3);
+        item_2.next = item_3;
+        ListNode item_4 = new ListNode(4);
+        item_3.next = item_4;
+        ListNode item_5 = new ListNode(5);
+        item_4.next = item_5;
+
+        System.out.println("Original List:");
+        printList(head);
+
+        ListNode reversedHead = reverseLinkedList(head);
+        System.out.println("Reversed List:");
+        printList(reversedHead);
+    }
+
 }
